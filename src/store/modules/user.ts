@@ -118,7 +118,7 @@ export const useUserStore = defineStore({
       if (info) {
         const { ctxPath } = useGlobSetting();
         let url = info.additionalInfo?.avatarUrl || undefined;
-        info.additionalInfo.avatarUrl = url || logoImg;
+        //info.additionalInfo.avatarUrl = url || logoImg;
         // info.additionalInfo.homePath = res.desktopUrl;
       }
       this.userInfo = info;

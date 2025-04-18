@@ -79,11 +79,13 @@
   import { copyToClipboard, openWindow } from '/@/utils';
   import ImageCard from './imageCard.vue';
   import { isEmpty } from '/@/utils/is';
+  import { useRouter } from 'vue-router';
   const defaultImage = '/resource/img/no-data.svg';
 
   const { t } = useI18n('tb');
   const { createConfirm, showMessage } = useMessage();
   const { hasPermission } = usePermission();
+  const router = useRouter();
 
   const getTitle = {
     value: '数据大屏',
@@ -218,21 +220,23 @@
   }
 
   function handleEdit(record: Recordable) {
-    const url = `/_visual#/chart/home/${record.id.id}`;
-    openWindow(url, { target: '_blank' });
+    const url = `/dashboard/${record.id.id}`;
+    //openWindow(url, { target: '_blank' });
+    router.push(url);
   }
 
   function handlePreview(record: Recordable) {
     if (!record.published) {
       handleEdit(record);
     } else {
-      const url = `/_visual#/chart/preview/${record.id.id}`;
-      openWindow(url, { target: '_blank' });
+      const url = `/dashboard/${record.id.id}`;
+      //openWindow(url, { target: '_blank' });
+      router.push(url);
     }
   }
 
   function handlePublish(record: Recordable) {
-    const previewUrl = `${location.protocol}//${location.host}/_visual#/chart/preview/${record.id.id}`;
+    const previewUrl = `http://192.168.80.123:9090/dashboard/${record.id.id}`;
     createConfirm({
       iconType: 'success',
       icon: () => h(Icon, { icon: 'ant-design:info-circle-filled', style: { color: 'blue' } }),

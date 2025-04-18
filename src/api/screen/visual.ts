@@ -21,39 +21,39 @@ export interface TbVisualInfo extends TbVisual {
 
 export function getTbVisualInfoById(tbVisualId: string) {
   return defHttp.get<TbVisualInfo>({
-    url: `/api/visual/info/${tbVisualId}`,
+    url: `/api/dashboard/info/${tbVisualId}`,
   });
 }
 
 export function getTbVisualById(tbVisualId: string) {
   return defHttp.get<TbVisual>({
-    url: `/api/visual/${tbVisualId}`,
+    url: `/api/dashboard/${tbVisualId}`,
   });
 }
 
 export function createTbVisual(data: TbVisual | any) {
   return defHttp.postJson<TbVisual>({
-    url: `/api/visual/create`,
+    url: `/api/dashboard`,
     data,
   });
 }
 
 export function saveTbVisual(data: TbVisualInfo | any) {
   return defHttp.postJson<TbVisualInfo>({
-    url: `/api/visual/info`,
+    url: `/api/dashboard/info`,
     data,
   });
 }
 
 export function deleteTbVisual(tbVisualId: string) {
   return defHttp.delete<TbVisualInfo>({
-    url: `/api/visual/${tbVisualId}`,
+    url: `/api/dashboard/${tbVisualId}`,
   });
 }
 
 export function currentTenantVisualList(params: BasicQuery) {
   return defHttp.get<Page<TbVisual>>({
-    url: '/api/tenant/visuals',
+    url: '/api/tenant/dashboards',
     params
   });
 }
